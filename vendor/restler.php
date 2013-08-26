@@ -1,6 +1,6 @@
 <?php
 if (is_readable(__DIR__.'/autoload.php')) {
-    //if composer autoloader is found use it
+    //if composer autoloader is found use it.
     $loader = require_once 'autoload.php';
     $loader->setUseIncludePath(true);
     class_alias('Luracast\\Restler\\Restler', 'Restler');
