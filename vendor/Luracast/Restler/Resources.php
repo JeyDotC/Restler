@@ -716,6 +716,12 @@ class Resources implements iUseAuthentication
             )){
                 $properties[$key]['required'] = true;
             }
+            
+            //Proposed change to allow the same service to be used as a Zend SOAP service
+            if (substr_compare($type, "[]", -2, 2) === 0) {
+                $type = "Array[" . rtrim($type, "[]") . "]";
+            }
+            
             if ($type == 'Array') {
                 $itemType = count($value)
                     ? $this->getType(end($value), true)
