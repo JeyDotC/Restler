@@ -78,7 +78,7 @@ class RestException extends Exception
      */
     public function __construct($httpStatusCode, $errorMessage = null, array $details = array(), Exception $previous = null)
     {
-        $events = Util::$restler->getEvents();
+        $events = isset(Util::$restler) ? Util::$restler->getEvents() : array();
         if(count($events)<= 1){
             $this->stage = 'setup';
         } else {
@@ -105,7 +105,7 @@ class RestException extends Exception
 
     public function getStages()
     {
-        $e = Util::$restler->_events;
+        $e = isset(Util::$restler) ? Util::$restler->_events : array();
         $i = array_search($this->stage, $e);
         return array(
             'success' => array_slice($e, 0, $i),
