@@ -225,7 +225,7 @@ class Resources implements iUseAuthentication
                 $this->_bodyParam = array(
                     'required' => false,
                     'description' => array()
-                );
+                );_v
                 $count++;
                 $className = $this->_noNamespace($route['className']);
                 if (!$r) {
@@ -705,6 +705,12 @@ class Resources implements iUseAuthentication
             if (isset(static::$dataTypeAlias[$type])) {
                 $type = static::$dataTypeAlias[$type];
             }
+            
+            // Check for Namespace\ClassName[] array documentation 
+            if (substr_compare($type, "[]", -2, 2) === 0) {
+                $type = "Array[" . rtrim($type, "[]") . "]";
+            }
+            
             $properties[$key] = array(
                 'type' => $type,
                 'description' => $description
