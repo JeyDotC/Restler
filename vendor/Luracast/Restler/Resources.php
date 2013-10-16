@@ -225,7 +225,7 @@ class Resources implements iUseAuthentication
                 $this->_bodyParam = array(
                     'required' => false,
                     'description' => array()
-                );_v
+                );
                 $count++;
                 $className = $this->_noNamespace($route['className']);
                 if (!$r) {
